@@ -1,0 +1,92 @@
+:root {
+	--light-color: #b4a5a5;
+	--dark-bg: #151515;
+	--main-color: #ff6363;
+	--main-color-light: #ffbd69;
+}
+
+* {
+	font-family: 'Lato', sans-serif;
+	box-sizing: border-box;
+	max-width: 100vw;
+}
+
+body, html {
+	margin: 0;
+	height: 100%;
+}
+
+.upload > input {
+	position: fixed;
+	left: -100%;
+}
+
+.upload {
+	display: grid;
+	row-gap: 10px;
+}
+
+.content {
+	padding: 1rem;
+}
+
+#main-container {
+	height: 100%;
+	background-color: #151515;
+}
+
+
+/*color for text */
+h1 {
+	color: #fff;
+	text-align: center;
+}
+
+p, h2 , h3, input[type="file"] {
+	color: var(--light-color);
+}
+
+a {
+	color: var(--main-color);
+	text-decoration: none;
+	transition: all .3s ease-in-out;
+}
+
+a:hover {
+	color: var(--main-color-light);
+}
+
+button {
+	background-color: var(--main-color);
+	transition: all .3s ease-in-out;
+	color: #fff;
+	outline: none;
+	padding: 5px 10px;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+}
+
+input:not([type="file"]) {
+	padding: 5px 10px;
+	outline: none;
+	border: 1px solid var(--main-color);
+	border-radius: 3px;
+	transition: all .3s ease-in-out;
+}
+
+input:focus {
+	border-color: var(--main-color-light);
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: var(--main-color-light);
+	color: var(--dark-bg);
+	font-weight: bold;
+}
+
+.form {
+	display: grid;
+	justify-content: center;
+}

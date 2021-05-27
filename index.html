@@ -4,8 +4,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="og:description" content="Transfer files peer to peer easy, without account or server, serverless peer to peer connection">
+	<meta property="og:title" content="Transfer peer to peer" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="Transfer files Peer to Peer" />
 	<script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
-	<script src="./js/index.js"></script>
+	<script type="module" src="./js/index.js"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/styles.css">
@@ -23,18 +27,39 @@
 					<p class="text">Share your file</p>
 					<input class="magnet-show" type="text">
 					<input type="text" class="magnet-link">
-					<button class="cp">Copy magnet</button>
-					<button class="share">Copy Share link</button>
+					<button class="cp hide">Copy magnet</button>
+					<button class="share hide">Copy Share link</button>
 				</div>
 				<div class="download">
 					<h3>Or download with a magnet</h3>
 					<input type="text" id="download" placeholder="magnet id">
 					<button>Get files</button>
-					<div id="download-links">
-						<h3>Your files:</h3>
-					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div id="main-modal" class="modal-wrapper hidden">
+		<div>
+			<h3 class="title">Loading please wait <div class="loader"></div></h3>
+			<div id="download-links" class="modal-content">
+				<p>Progress <span id="progress">0</span>%</p>
+				<p><i>this may take a few minutes</i></p>
+			</div>
+			<div class="actions hidden">
+				<button id="dw-all">Download All</button>
+				<button id="close">Discard</button>
+			</div>
+		</div>
+	</div>
+	<div class="away" id="info-wrapper">
+		<div class="peers">
+			<p>Peers: <span id="peer-count">0</span></p>
+		</div>
+		<div class="upload-speed">
+			<p>Upload speed: <span id="upload-speed">0</span>Mb/s</p>
+		</div>
+		<div class="download-speed">
+			<p>Download speed: <span id="download-speed">0</span>Mb/s</p>
 		</div>
 	</div>
 </body>

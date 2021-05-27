@@ -61,14 +61,18 @@ button {
 	transition: all .3s ease-in-out;
 	color: #fff;
 	outline: none;
-	padding: 5px 10px;
+	padding: 10px 10px;
 	border-radius: 4px;
 	border: none;
 	cursor: pointer;
+	transform-origin: top;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
 }
 
 input:not([type="file"]) {
-	padding: 5px 10px;
+	padding: 9px 10px;
 	outline: none;
 	border: 1px solid var(--main-color);
 	border-radius: 3px;
@@ -80,8 +84,32 @@ input:focus {
 	border-radius: 4px;
 }
 
-button:hover {
+button::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 	background-color: var(--main-color-light);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform .2s ease-in;
+}
+
+button:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+button:focus::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+button:hover {
+	/*background-color: var(--main-color-light);*/
 	color: var(--dark-bg);
 	font-weight: bold;
 }
@@ -89,4 +117,105 @@ button:hover {
 .form {
 	display: grid;
 	justify-content: center;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.hide {
+	display: none;
+}
+
+.modal-wrapper {
+	display: grid;
+	place-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, .5);
+	z-index: 1;
+}
+
+.modal-wrapper > div {
+	background-color: var(--light-color);
+	border-radius: 3px;
+	padding: 10px;
+	min-width: 50vw;
+	min-height: 50px;
+	max-width: 80vw;
+}
+
+.modal-wrapper .title {
+	color: var(--dark-bg);
+	display: flex;
+	align-items: center;
+	margin: 0;
+	gap: 10px;
+}
+
+.modal-wrapper p {
+	color: var(--light-color);
+}
+
+.modal-wrapper a {
+	margin: 10px 0;
+}
+
+.modal-wrapper .actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin: 10px 0;
+	gap: 10px;
+}
+
+#download-links {
+	display: grid;
+	min-height: 20px;
+	margin-top: 10px;
+	padding-left: .5em;
+	background-color: var(--dark-bg);
+	border-radius: 3px;
+	max-height: 50vh;
+	overflow: auto;
+}
+
+#info-wrapper {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
+	background-color: #fff;
+	border-radius: 3px 0px 0px 0px;
+	z-index: 2;
+	box-shadow: -1px -1px 8px 4px #151515;
+	transform: translate(0, 0);
+	transition: all .3s ease-in;
+}
+
+#info-wrapper span {
+	color: var(--main-color);
+}
+
+#info-wrapper.away {
+	transform: translate(100%, 100%);
+	display: none;
+}
+
+.loader {
+	border: 6px solid var(--dark-bg);
+	border-radius: 50%;
+	border-top: 6px solid var(--main-color-light);
+	width: 32px;
+	height: 32px;
+	animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+	50% { transform: rotate(120deg) }
+	75% { transform: rotate(300deg); }
+  100% { transform: rotate(360deg); }
 }
